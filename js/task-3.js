@@ -1,33 +1,15 @@
-class StringBuilder {
-  #value;
+const forInn = document.querySelector('#name-input');
+const forOut = document.querySelector('#name-output');
 
-  constructor(initialValue) {
-    this.#value = initialValue;
-  }
+forInn.addEventListener('input', handleInput);
 
-  getValue() {
-    return this.#value;
-  }
+function handleInput(event) {
+    const inputCurrent = event.currentTarget.value.trim();
 
-  padEnd(str) {
-    this.#value += str;
-  }
-
-  padStart(str) {
-    this.#value = str + this.#value;
-  }
-
-  padBoth(str) {
-    this.#value = str + this.#value + str;
-  }
+    if (inputCurrent === '') {
+        forOut.textContent = 'Anonymous';
+    }
+    else {
+        forOut.textContent = inputCurrent;
+    }
 }
-
-
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
